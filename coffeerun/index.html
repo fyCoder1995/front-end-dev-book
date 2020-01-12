@@ -1,12 +1,125 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>coffeerun</title>
-  </head>
-  <body>
-    <script src="scripts/datastore.js" charset="utf-8"></script>
-    <script src="scripts/truck.js" charset="utf-8"></script>
-    <script src="scripts/main.js" charset="utf-8"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>coffeerun</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body class="container">
+  <header>
+    <h1>CoffeeRun</h1>
+  </header>
+  <section>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form data-coffee-order="form">
+          <div class="form-group">
+            <label for="coffeeOrder">Coffee Order</label>
+            <input class="form-control" name="coffee" id="coffeeOrder" autofocus>
+          </div>
+          <div class="form-group">
+            <label for="emailInput">Email</label>
+            <input class="form-control" type="email" name="emailAddress" id="emailInput" value="" placeholder="dr@who.com">
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="size" value="short">
+              Short
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="size" value="tall" checked>
+              Tall
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="size" value="grande">
+              Grande
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="size" value="godzilla">
+              Godzilla
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="flavorShot">Flavor Shot</label>
+            <select id="flavorShot" class="form-control" name="flavor">
+              <option value="">None</option>
+              <option value="caramel">Caramel</option>
+              <option value="almond">Almond</option>
+              <option value="mocha">Mocha</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="strengthLevel">Caffeine Rating</label>
+            <!-- 当滑块滑动时显示其数值，并改变颜色 -->
+            <!-- <span id="range-number"></span> -->
+            <input name="strength" id="strengthLevel" type="range" value="30">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+          <!-- 扩展-模态框 -->
+          <!-- <button type="submit" class="btn btn-default" data-toggle="modal" id="#myModal">Submit</button> -->
+          <button type="reset" class="btn btn-default">Reset</button>
+        </form>
+      </div>
+    </div>
+    <!-- Modal 扩展-模态框-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Are you sure you want the strongest and godzilla cup of coffee?</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Address:</label>
+                <input type="text" class="form-control" id="rightAddress">
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="types" value="kill time" checked>
+                  Kill Time
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="types" value="mind reading">
+                  Mind Reading
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="types" value="solve problem">
+                  Solve Problem
+                </label>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="add_customize">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+  <!-- 扩展-模态框 -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" charset="utf-8"></script> -->
+  <script src="scripts/formhandler.js" charset="utf-8"></script>
+  <!-- 扩展-模态框/滑动颜色 -->
+  <!-- <script src="scripts/formhandler_expand.js" charset="utf-8"></script> -->
+  <script src="scripts/datastore.js" charset="utf-8"></script>
+  <script src="scripts/truck.js" charset="utf-8"></script>
+  <script src="scripts/main.js" charset="utf-8"></script>
+</body>
+
 </html>
