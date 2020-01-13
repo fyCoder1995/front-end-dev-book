@@ -69,6 +69,47 @@
         </form>
       </div>
     </div>
+    <!-- Modal 扩展-模态框-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Are you sure you want the strongest and godzilla cup of coffee?</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Address:</label>
+                <input type="text" class="form-control" id="rightAddress">
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="types" value="kill time" checked>
+                  Kill Time
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="types" value="mind reading">
+                  Mind Reading
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="types" value="solve problem">
+                  Solve Problem
+                </label>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="add_customize">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="panel panel-default">
       <div class="panel-body">
         <h4>Panding Orders</h4>
@@ -78,7 +119,11 @@
   </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
   <script src="scripts/checklist.js" charset="utf-8"></script>
+  <!-- 扩展-模态框 -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" charset="utf-8"></script> -->
   <script src="scripts/formhandler.js" charset="utf-8"></script>
+  <!-- 扩展-模态框/滑动颜色 -->
+  <!-- <script src="scripts/formhandler_expand.js" charset="utf-8"></script> -->
   <script src="scripts/datastore.js" charset="utf-8"></script>
   <script src="scripts/truck.js" charset="utf-8"></script>
   <script src="scripts/main.js" charset="utf-8"></script>
