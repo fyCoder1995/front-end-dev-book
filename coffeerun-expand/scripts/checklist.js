@@ -14,12 +14,22 @@
     }
   }
 
-  CheckList.prototype.addClickHandler = function(fn){
-    this.$element.on('click','input',function(event){
+  CheckList.prototype.addClickHandler = function(fn) {
+    var timer = null;
+    this.$element.on('dblclick', 'input', function(event) {
+      clearTimeout(timer);
+    });
+
+    this.$element.on('click', 'input', function(event) {
+      clearTimeout(timer);
       var email = event.target.value;
-      this.removeRow(email);
+      timer = setTimeout(function() {
+        this.removeRow(email);
+      }.bind(this), 1500);
       fn(email);
     }.bind(this));
+
+
   };
 
   CheckList.prototype.addRow = function(coffeeOrder) {
@@ -40,9 +50,24 @@
   };
 
   function Row(coffeeOrder) {
+    var rowColor = 'lightpink';
+    switch (coffeeOrder.flavor) {
+      case 'caramel':
+        rowColor = 'darkorange';
+        break;
+      case 'almond':
+        rowColor = 'yellowgreen';
+        break;
+      case 'expression':
+        rowColor = 'bisque';
+        break;
+      default:
+        break;
+    }
     var $div = $('<div></div>', {
       'data-coffee-order': 'checkbox',
-      'class': 'checkbox'
+      'class': 'checkbox',
+      'style': 'background:' + rowColor
     });
 
     var $label = $('<label></label>');
@@ -52,14 +77,14 @@
       value: coffeeOrder.emailAddress
     });
 
-    var description = coffeeOrder.size + ' ';
+    var description = '[' + coffeeOrder.strength + 'x] ';
     if (coffeeOrder.flavor) {
       description += coffeeOrder.flavor + ' ';
     }
 
     description += coffeeOrder.coffee + ', ';
-    description += ' (' + coffeeOrder.emailAddress + ')';
-    description += ' [' + coffeeOrder.strength + 'x]';
+    description += ' (' + coffeeOrder.emailAddress + ') ';
+    description += coffeeOrder.size + ' ';
 
     $label.append($checkbox);
     $label.append(description);

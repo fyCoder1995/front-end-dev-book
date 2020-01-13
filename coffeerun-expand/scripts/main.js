@@ -7,8 +7,7 @@
   var DataStore = App.DataStore;
   var FormHandler = App.FormHandler;
   var CheckList = App.CheckList;
-  var myTruck = new Truck('ncc-1701',new DataStore());
-  // var myTruck = new Truck('HAL',new DataStore());
+  var myTruck = new Truck('HAL',new DataStore());
   window.myTruck = myTruck;
   var checkList = new CheckList(CHECKLIST_SELECTOR);
   checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
@@ -17,5 +16,5 @@
     myTruck.createOrder.call(myTruck, data);
     checkList.addRow.call(checkList, data);
   });
-  // formHandler.changeRangeHandler(); //当滑块滑动时显示其数值，并改变颜色
+  formHandler.changeRangeHandler(); //当滑块滑动时显示其数值，并改变颜色
 })(window);

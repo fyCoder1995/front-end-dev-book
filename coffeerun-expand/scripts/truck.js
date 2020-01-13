@@ -22,7 +22,7 @@
     console.log('Truck #' + this.truckId + ' has pending orders:');
     customerIdArray.forEach(function (id){
       console.log(this.db.get(id));
-    }.bind(this)); // 可以使用【, this 】来代替【.bind(this)】
+    }, this);
 
   };
 
