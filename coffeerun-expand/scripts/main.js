@@ -6,7 +6,9 @@
   var Truck = App.Truck;
   var DataStore = App.DataStore;
   var FormHandler = App.FormHandler;
+  var Validation = App.Validation;
   var CheckList = App.CheckList;
+  var webshim = window.webshim;
   var myTruck = new Truck('HAL',new DataStore());
   window.myTruck = myTruck;
   var checkList = new CheckList(CHECKLIST_SELECTOR);
@@ -16,5 +18,8 @@
     myTruck.createOrder.call(myTruck, data);
     checkList.addRow.call(checkList, data);
   });
-  formHandler.changeRangeHandler(); //当滑块滑动时显示其数值，并改变颜色
+  formHandler.addInputHandler(Validation.isCompanyEmail);
+  formHandler.changeRangeHandler(Validation.isStringAndNumber); //当滑块滑动时显示其数值，并改变颜色
+  webshim.polyfill('forms forms-ext');
+  webshim.setOptions('forms', {addValidator: true, lazyCustomMessages :true});
 })(window);

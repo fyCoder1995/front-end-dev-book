@@ -47,15 +47,37 @@
       })
     };
 
+    FormHandler.prototype.addInputHandler = function(fn){
+      console.log('Setting input handler for form');
+      this.$formElement.on('input','[name="emailAddress"]',function(event){
+        var emailAddress = event.target.value;
+        var message = '';
+        if(fn(emailAddress)){
+          $(event.target).setCustomValidity('');
+        }else {
+          message = emailAddress + 'is not an authorized email address';
+          $(event.target).setCustomValidity(message);
+        }
+        console.log(message);
+      });
+    };
+
     //当滑块滑动时显示其数值，并改变颜色
-    FormHandler.prototype.changeRangeHandler = function() {
+    FormHandler.prototype.changeRangeHandler = function(fn) {
       console.log('Change range handler for form');
       var colors = "";
-
-      this.$formElement.change('range', function(event) {
+      this.$formElement.on('input','[name="strength"]',function(event) {
         $("#range-number").show();
-        var data = $(this).serializeArray();
-        var rangNumber = data[4].value;
+        var orderStr = $('[name="coffee"]').val();
+        var rangNumber = event.target.value;
+        var message = '';
+        if(fn(orderStr,rangNumber)){
+          $(event.target).setCustomValidity('');
+        }else {
+          message = orderStr + ' do not have [decaf] and ' + rangNumber + ' is not less than [20]';
+          $(event.target).setCustomValidity(message);
+          console.log(message);
+        }
 
         $("#range-number").html("&nbsp;&nbsp;&nbsp;" + rangNumber);
         if (rangNumber <= 33) {
@@ -67,6 +89,8 @@
         }
 
         $("#range-number").css("color", colors);
+
+
       });
     };
 
