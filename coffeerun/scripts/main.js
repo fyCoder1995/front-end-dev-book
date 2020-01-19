@@ -17,8 +17,13 @@
   checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
   var formHandler = new FormHandler(FORM_SELECTOR);
   formHandler.addSubmitHandler(function(data){
-    myTruck.createOrder.call(myTruck, data);
-    checkList.addRow.call(checkList, data);
+    return myTruck.createOrder.call(myTruck, data)
+      .then(function(){
+        checkList.addRow.call(checkList, data);
+      },function(){
+        alert('Server unreachable. Try again later.');
+      });
   });
   formHandler.addInputHandler(Validation.isCompanyEmail);
+  myTruck.printOrders(checkList.addRow.bind(checkList));
 })(window);
