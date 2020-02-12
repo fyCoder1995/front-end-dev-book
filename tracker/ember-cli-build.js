@@ -30,6 +30,7 @@ module.exports = function(defaults) {
   // 生成指向bootstrap资源文件的路径
   // 使用import向应用添加对该资源的引用
   app.import(bootstrapPath + 'javascripts/bootstrap.js');
+  app.import('bower_components/moment/moment.js');
 
   return app.toTree();
 };
